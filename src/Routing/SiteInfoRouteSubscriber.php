@@ -14,6 +14,8 @@ class SiteInfoRouteSubscriber extends RouteSubscriberBase {
    * {@inheritdoc}
    */
   protected function alterRoutes(RouteCollection $collection) {
-
+    // Extending site information form.
+    $site_info_route = $collection->get('system.site_information_settings');
+    $site_info_route->setDefault('_form', 'Drupal\axe_site_api\Form\SiteInfoForm');
   }
 }
