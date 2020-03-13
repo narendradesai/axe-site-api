@@ -22,6 +22,9 @@ class SiteInfoForm extends SiteInformationForm {
    */
   protected $messenger;
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(ConfigFactoryInterface $config_factory, AliasManagerInterface $alias_manager, PathValidatorInterface $path_validator, RequestContext $request_context, MessengerInterface $messenger) {
     parent::__construct($config_factory, $alias_manager, $path_validator, $request_context);
     $this->messenger = $messenger;
@@ -69,7 +72,6 @@ class SiteInfoForm extends SiteInformationForm {
     if (!empty($form_state->getValue('siteapikey')) && $form_state->getValue('siteapikey') != "No API Key yet") {
       $this->messenger->addMessage($this->t('Site API Key saved with key: ') . $config->get('siteapikey') , $this->messenger::TYPE_STATUS);
     }
-
     parent::submitForm($form, $form_state);
   }
 }
